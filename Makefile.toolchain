@@ -1,0 +1,36 @@
+NRF52840_CFLAGS := -D__STACK_SIZE=2048
+NRF52840_CFLAGS += -DNRF52
+NRF52840_CFLAGS += -DSOFTDEVICE_PRESENT
+NRF52840_CFLAGS += -DNRF52840
+NRF52840_CFLAGS += -D__HEAP_SIZE=1024
+NRF52840_CFLAGS += -DNRF52_PAN_12
+NRF52840_CFLAGS += -DNRF52_PAN_15
+NRF52840_CFLAGS += -DNRF52_PAN_20
+NRF52840_CFLAGS += -DNRF52_PAN_31
+NRF52840_CFLAGS += -DNRF52_PAN_36
+NRF52840_CFLAGS += -DNRF52_PAN_51
+NRF52840_CFLAGS += -DNRF52_PAN_54
+NRF52840_CFLAGS += -DNRF52_PAN_55
+NRF52840_CFLAGS += -DNRF52_PAN_58
+NRF52840_CFLAGS += -DNRF52_PAN_64
+NRF52840_CFLAGS += -DCONFIG_NFCT_PINS_AS_GPIOS
+NRF52840_CFLAGS += -DBLE_STACK_SUPPORT_REQD
+NRF52840_CFLAGS += -DNRF_SD_BLE_API_VERSION=4
+NRF52840_CFLAGS += -DS132
+NRF52840_CFLAGS += -mcpu=cortex-m4
+NRF52840_CFLAGS += -mthumb -mabi=aapcs
+NRF52840_CFLAGS +=  -Wall -Os -g3 -std=gnu99
+NRF52840_CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
+# keep every function in separate section, this allows linker to discard unused ones
+NRF52840_CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
+NRF52840_CFLAGS += -fno-builtin --short-enums 
+
+# Linker flags
+NRF52840_LDFLAGS := -mthumb -mabi=aapcs
+NRF52840_LDFLAGS += -mcpu=cortex-m4
+NRF52840_LDFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
+# let linker to dump unused sections
+NRF52840_LDFLAGS += -Wl,--gc-sections
+# use newlib in nano version
+NRF52840_LDFLAGS += --specs=nano.specs -lc -lnosys
+NRF52840_LDFLAGS += -Wl,-z,max-page-size=4096

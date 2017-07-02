@@ -1,0 +1,154 @@
+# Generic SDK files (everyone needs these)
+SDK_SRCS := \
+	SDK-13.0.0/components/libraries/util/app_error_weak.c \
+	SDK-13.0.0/components/libraries/util/app_util_platform.c \
+	SDK-13.0.0/components/libraries/crc16/crc16.c \
+	SDK-13.0.0/components/libraries/fds/fds.c \
+	SDK-13.0.0/components/libraries/fstorage/fstorage.c \
+	SDK-13.0.0/components/libraries/hardfault/hardfault_implementation.c \
+	SDK-13.0.0/components/libraries/util/nrf_assert.c \
+	SDK-13.0.0/components/libraries/util/sdk_mapped_flags.c \
+	SDK-13.0.0/components/drivers_nrf/clock/nrf_drv_clock.c \
+	SDK-13.0.0/components/drivers_nrf/spi_master/nrf_drv_spi.c \
+	SDK-13.0.0/components/drivers_nrf/hal/nrf_nvmc.c \
+	SDK-13.0.0/components/drivers_nrf/hal/nrf_saadc.c \
+	SDK-13.0.0/components/drivers_nrf/saadc/nrf_drv_saadc.c \
+	SDK-13.0.0/components/drivers_nrf/common/nrf_drv_common.c \
+	SDK-13.0.0/components/softdevice/common/softdevice_handler/softdevice_handler.c
+
+# BLE SDK files
+SDK_SRCS_BLE := \
+	SDK-13.0.0/components/libraries/util/app_error.c \
+	SDK-13.0.0/components/ble/ble_advertising/ble_advertising.c \
+	SDK-13.0.0/components/ble/common/ble_advdata.c \
+	SDK-13.0.0/components/ble/common/ble_conn_state.c \
+	SDK-13.0.0/components/ble/common/ble_srv_common.c \
+	SDK-13.0.0/components/ble/nrf_ble_gatt/nrf_ble_gatt.c \
+	SDK-13.0.0/components/ble/peer_manager/gatt_cache_manager.c \
+	SDK-13.0.0/components/ble/peer_manager/gatts_cache_manager.c \
+	SDK-13.0.0/components/ble/peer_manager/id_manager.c \
+	SDK-13.0.0/components/ble/peer_manager/peer_data_storage.c \
+	SDK-13.0.0/components/ble/peer_manager/peer_database.c \
+	SDK-13.0.0/components/ble/peer_manager/peer_id.c \
+	SDK-13.0.0/components/ble/peer_manager/peer_manager.c \
+	SDK-13.0.0/components/ble/peer_manager/pm_buffer.c \
+	SDK-13.0.0/components/ble/peer_manager/pm_mutex.c \
+	SDK-13.0.0/components/ble/peer_manager/security_dispatcher.c \
+	SDK-13.0.0/components/ble/peer_manager/security_manager.c \
+	SDK-13.0.0/components/ble/ble_services/ble_bas/ble_bas.c \
+	SDK-13.0.0/components/ble/ble_services/ble_dis/ble_dis.c \
+	SDK-13.0.0/components/ble/ble_services/ble_nus/ble_nus.c \
+	SDK-13.0.0/components/ble/ble_services/ble_hids/ble_hids.c \
+
+# FreeRTOS specific files
+SDK_SRCS_FREERTOS := \
+	SDK-13.0.0/components/libraries/timer/app_timer_freertos.c \
+	SDK-13.0.0/external/freertos/source/croutine.c \
+	SDK-13.0.0/external/freertos/source/event_groups.c \
+	SDK-13.0.0/external/freertos/source/portable/MemMang/heap_2.c \
+	SDK-13.0.0/external/freertos/source/list.c \
+	SDK-13.0.0/external/freertos/source/queue.c \
+	SDK-13.0.0/external/freertos/source/tasks.c \
+	SDK-13.0.0/external/freertos/source/timers.c \
+
+# FreeRTOS files that are nRF52 specific
+SDK_SRCS_FREERTOS_NRF52 := \
+	SDK-13.0.0/external/freertos/portable/GCC/nrf52/port.c \
+	SDK-13.0.0/external/freertos/portable/CMSIS/nrf52/port_cmsis.c \
+	SDK-13.0.0/external/freertos/portable/CMSIS/nrf52/port_cmsis_systick.c \
+
+# SDK files that are nRF52 specific
+SDK_SRCS_NRF52 := \
+	SDK-13.0.0/components/libraries/hardfault/nrf52/handler/hardfault_handler_gcc.c \
+	SDK-13.0.0/components/toolchain/gcc/gcc_startup_nrf52.S \
+	SDK-13.0.0/components/toolchain/system_nrf52.c
+
+# Most include-directories for the SDK
+SDK_CFLAGS := \
+ 	-ISDK-13.0.0/components/drivers_nrf/comp \
+ 	-ISDK-13.0.0/components/drivers_nrf/twi_master \
+ 	-ISDK-13.0.0/components/ble/ble_services/ble_ancs_c \
+ 	-ISDK-13.0.0/components/ble/ble_services/ble_ias_c \
+ 	-ISDK-13.0.0/components/libraries/pwm \
+ 	-ISDK-13.0.0/components/libraries/usbd/class/cdc/acm \
+ 	-ISDK-13.0.0/components/libraries/usbd/class/hid/generic \
+ 	-ISDK-13.0.0/components/libraries/usbd/class/msc \
+ 	-ISDK-13.0.0/components/libraries/usbd/class/hid \
+ 	-ISDK-13.0.0/components/libraries/log \
+ 	-ISDK-13.0.0/components/libraries/strerror \
+ 	-ISDK-13.0.0/components/libraries/fstorage \
+ 	-ISDK-13.0.0/components/drivers_nrf/i2s \
+ 	-ISDK-13.0.0/components/drivers_nrf/saadc \
+ 	-ISDK-13.0.0/components/libraries/gpiote \
+ 	-ISDK-13.0.0/components/drivers_nrf/gpiote \
+ 	-ISDK-13.0.0/components/drivers_nrf/common \
+ 	-ISDK-13.0.0/components/ble/ble_advertising \
+ 	-ISDK-13.0.0/components/drivers_nrf/adc \
+ 	-ISDK-13.0.0/components/libraries/queue \
+ 	-ISDK-13.0.0/components/ble/ble_dtm \
+ 	-ISDK-13.0.0/components/toolchain/cmsis/include \
+ 	-ISDK-13.0.0/components/drivers_nrf/uart \
+ 	-ISDK-13.0.0/components/ble/common \
+ 	-ISDK-13.0.0/components/ble/ble_services/ble_lls \
+ 	-ISDK-13.0.0/components/drivers_nrf/wdt \
+ 	-ISDK-13.0.0/components/ble/ble_services/ble_bas \
+ 	-ISDK-13.0.0/components/ble/ble_services/ble_hids \
+ 	-ISDK-13.0.0/components/libraries/experimental_section_vars \
+ 	-ISDK-13.0.0/components/libraries/slip \
+ 	-ISDK-13.0.0/components/libraries/mem_manager \
+ 	-ISDK-13.0.0/external/segger_rtt \
+ 	-ISDK-13.0.0/components/libraries/usbd/class/cdc \
+ 	-ISDK-13.0.0/components/drivers_nrf/hal \
+ 	-ISDK-13.0.0/components/ble/ble_services/ble_nus_c \
+ 	-ISDK-13.0.0/components/drivers_nrf/rtc \
+ 	-ISDK-13.0.0/components/libraries/usbd/class/hid/mouse \
+ 	-ISDK-13.0.0/components/drivers_nrf/ppi \
+ 	-ISDK-13.0.0/components/ble/ble_services/ble_dfu \
+ 	-ISDK-13.0.0/components/drivers_nrf/twis_slave \
+ 	-ISDK-13.0.0/components \
+ 	-ISDK-13.0.0/components/libraries/scheduler \
+ 	-ISDK-13.0.0/components/drivers_nrf/delay \
+ 	-ISDK-13.0.0/components/libraries/crc16 \
+ 	-ISDK-13.0.0/components/drivers_nrf/timer \
+ 	-ISDK-13.0.0/components/libraries/util \
+ 	-ISDK-13.0.0/components/drivers_nrf/pwm \
+ 	-ISDK-13.0.0/components/libraries/csense_drv \
+ 	-ISDK-13.0.0/components/libraries/csense \
+ 	-ISDK-13.0.0/components/drivers_nrf/rng \
+ 	-ISDK-13.0.0/components/libraries/low_power_pwm \
+ 	-ISDK-13.0.0/components/libraries/hardfault \
+ 	-ISDK-13.0.0/components/libraries/uart \
+ 	-ISDK-13.0.0/components/libraries/hci \
+ 	-ISDK-13.0.0/components/drivers_nrf/spi_slave \
+ 	-ISDK-13.0.0/components/drivers_nrf/lpcomp \
+ 	-ISDK-13.0.0/components/libraries/timer \
+ 	-ISDK-13.0.0/components/drivers_nrf/power \
+ 	-ISDK-13.0.0/components/toolchain \
+ 	-ISDK-13.0.0/components/drivers_nrf/qdec \
+ 	-ISDK-13.0.0/components/drivers_nrf/spi_master \
+ 	-ISDK-13.0.0/components/ble/ble_services/ble_nus \
+ 	-ISDK-13.0.0/components/drivers_nrf/pdm \
+ 	-ISDK-13.0.0/components/libraries/crc32 \
+ 	-ISDK-13.0.0/external/freertos/source/include \
+ 	-ISDK-13.0.0/components/ble/peer_manager \
+ 	-ISDK-13.0.0/components/drivers_nrf/swi \
+ 	-ISDK-13.0.0/components/ble/ble_services/ble_dis \
+ 	-ISDK-13.0.0/components/device \
+ 	-ISDK-13.0.0/components/ble/nrf_ble_gatt \
+ 	-ISDK-13.0.0/components/ble/nrf_ble_qwr \
+ 	-ISDK-13.0.0/components/libraries/button \
+ 	-ISDK-13.0.0/components/ble/ble_racp \
+ 	-ISDK-13.0.0/components/toolchain/gcc \
+ 	-ISDK-13.0.0/components/libraries/fds \
+ 	-ISDK-13.0.0/components/libraries/twi \
+ 	-ISDK-13.0.0/components/drivers_nrf/clock \
+ 	-ISDK-13.0.0/components/drivers_nrf/usbd \
+ 	-ISDK-13.0.0/components/softdevice/common/softdevice_handler \
+ 	-ISDK-13.0.0/components/libraries/log/src
+ 
+ SDK_CFLAGS_NRF52 := \
+ 	-ISDK-13.0.0/external/freertos/portable/GCC/nrf52 \
+ 	-ISDK-13.0.0/external/freertos/portable/CMSIS/nrf52 \
+ 	-ISDK-13.0.0/components/libraries/hardfault/nrf52 \
+ 	-ISDK-13.0.0/components/softdevice/s132/headers/nrf52 \
+ 	-ISDK-13.0.0/components/softdevice/s132/headers \
